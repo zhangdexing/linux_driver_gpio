@@ -1,0 +1,66 @@
+such as...
+1.
+
+	spk-ctl {
+		compatible = "spk-ctl";
+		pinctrl-names = "default";
+		pinctrl-0 = <&spk_gpio>;
+		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
+
+
+	};
+
+&pinctrl {
+
+	spkctl {
+		spk_gpio: spk-gpio{
+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+
+	};
+	....
+}
+
+
+2.
+
+test-leds {
+		compatible = "test-leds";
+		poll-interval = <100>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&led_gpio>;
+		gpio = <&gpio0 RK_PC0 GPIO_ACTIVE_HIGH>;
+
+		led-key {
+			linux,code = <KEY_MEDIA>;
+			label = "media";
+			
+		};
+
+	};
+
+&pinctrl {
+	pinctrl-names = "default";
+	pinctrl-0 = <&rtc_32k>;
+	
+	myled {
+		led_gpio: led-gpio{
+			rockchip,pins = <0 RK_PC0 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
